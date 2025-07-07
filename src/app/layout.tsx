@@ -1,3 +1,4 @@
+import { notoSansJp } from "@/utils/fonts";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body className={notoSansJp.className}>{children}</body>
     </html>
   );
 }
