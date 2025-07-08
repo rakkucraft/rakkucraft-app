@@ -34,13 +34,29 @@ To contribute code to Rakkucraft, you must fork the [Rakkucraft App repo](https:
 
 1. Clone your GitHub forked repo:
 
+```bash
+git clone https://github.com/<github_username>/rakkucraft-app.git
+```
+
 2. Go to the Rakkucraft App directory:
 
-### Install depencies
+```bash
+cd rakkucraft-app
+```
+
+### Install dependencies
 
 1. Install the dependencies in the root of the repo.
 
+```bash
+pnpm install
+```
+
 2. After that you can run the apps simultaneously with the following.
+
+```bash
+pnpm dev
+```
 
 ## Issues
 
