@@ -1,4 +1,4 @@
-name: Lint
+name: Run Jest Tests
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,11 +29,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Prettier check
-        run: pnpm format:check
-
-      - name: Run ESLint
-        run: pnpm lint
-
-      - name: Run type-check (TypeScript)
-        run: pnpm tsc --noEmit
+      - name: Run Jest tests
+        run: pnpm test
