@@ -1,7 +1,7 @@
 # Rakkucraft App
 
 This is the official web application for **Rakkucraft**, an open-source platform aiming to provide a modern alternative to WordPress.  
-This repository hosts the authentication-enabled community site that integrates a drag-and-drop builder and deployment pipeline using **Next.js**, **Supabase**, and **Cloudflare Pages/Workers**.
+This repository hosts the authentication-enabled community site that integrates a drag-and-drop builder and deployment pipeline using **Next.js**, **Supabase**, and **Cloudflare Workers**.
 
 ## 🚧 Status
 
@@ -11,7 +11,7 @@ This project is under initial development. The first stable release is being pla
 
 - [Next.js](https://nextjs.org/) – App Router architecture
 - [Supabase](https://supabase.com/) – Auth, Database, and Storage
-- [Cloudflare Pages & Workers](https://developers.cloudflare.com/pages/) – Hosting and serverless logic
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) – Hosting and serverless logic
 - [TypeScript](https://www.typescriptlang.org/) – Static typing
 - [Tailwind CSS](https://tailwindcss.com/) – UI styling
 
