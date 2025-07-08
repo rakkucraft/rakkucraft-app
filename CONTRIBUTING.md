@@ -44,15 +44,13 @@ git clone https://github.com/<github_username>/rakkucraft-app.git
 cd rakkucraft-app
 ```
 
-### Install dependencies
-
-1. Install the dependencies in the root of the repo.
+3. Install the dependencies in the root of the repo.
 
 ```bash
 pnpm install
 ```
 
-2. After that you can run the apps simultaneously with the following.
+4. After that you can run the apps simultaneously with the following.
 
 ```bash
 pnpm dev
