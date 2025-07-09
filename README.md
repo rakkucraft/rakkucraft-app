@@ -39,6 +39,12 @@ Additionally, Rakkucraft offers:
 - 💰 A high-return marketplace for selling themes and plugins
 - 📨 Development opportunities for contributors via user-submitted Rakkucraft projects
 
+## ✨ Service Name Meaning
+
+The name "Rakkucraft" combines the Japanese word "Raku" (楽), meaning "easy" or "relaxing," with "Craft," symbolizing creation and craftsmanship.
+
+Together, Rakkucraft represents a platform that makes web creation both approachable and thoughtfully designed—merging ease of use with the power of modern development tools.
+
 ## 🎯 Mission
 
 Rakkucraft empowers creators by combining the accessibility of WordPress-like workflows with the performance and scalability of modern technologies.  
