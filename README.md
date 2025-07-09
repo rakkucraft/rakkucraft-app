@@ -23,12 +23,37 @@ The first stable release is being planned.
 
 ## 📚 Overview
 
-In future releases, this application will support:
+Rakkucraft reimagines the WordPress experience using a modern tech stack—empowering users to build, manage, and deploy websites with familiar workflows and vastly improved performance.
 
-- 🔐 User authentication & role-based access
-- 🧱 Project builder with preview/export capabilities
-- 💬 Community features: comments, feedback threads, publishing flow
-- 📊 Dashboard to manage user-generated sites
+This application will support:
+
+- 🔐 Role-based authentication for secure user access
+- 🧱 Drag-and-drop project builder with live preview and export features
+- 💬 Community tools including comments, feedback threads, and publishing flows
+- 📊 Dashboard for managing user-generated sites and assets
+
+Additionally, Rakkucraft offers:
+
+- 🛠️ A scalable and cost-efficient alternative to legacy WordPress infrastructure
+- 🌏 Benefits for stakeholders across the ecosystem: users, web agencies, and modern developers
+- 💰 A high-return marketplace for selling themes and plugins
+- 📨 Development opportunities for contributors via user-submitted Rakkucraft projects
+
+## 🎯 Mission
+
+Rakkucraft empowers creators by combining the accessibility of WordPress-like workflows with the performance and scalability of modern technologies.  
+Our mission is to provide an open, adaptable, and community-driven platform for building the next generation of websites—one that prioritizes flexibility, collaboration, and global inclusivity.
+
+## 🌍 Why OSS?
+
+We believe that open-source development fosters creativity, trust, and innovation.  
+By making Rakkucraft open and participatory, we invite developers, designers, and creators from all backgrounds to collaborate, share insights, and shape a platform that serves real-world needs.
+
+This approach also ensures that:
+
+- 🌐 Global talent can contribute and learn together
+- 🤝 Code and ideas evolve through peer review and shared ownership
+- 🎁 Contributors may receive visibility, project opportunities, and income through the Rakkucraft ecosystem
 
 ## 🧪 How to Run Locally
 
