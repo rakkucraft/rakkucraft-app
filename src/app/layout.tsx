@@ -1,4 +1,4 @@
-import { notoSansJp } from "@/utils/fonts";
+import { notoSansJp } from "@/lib/fonts";
 import "./globals.css";
 
 export default function RootLayout({

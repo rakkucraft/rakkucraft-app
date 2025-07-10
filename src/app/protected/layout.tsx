@@ -1,4 +1,4 @@
-import { rubik } from "@/utils/fonts";
+import { rubik } from "@/lib/fonts";
 import {
   Camera,
   Gauge,
