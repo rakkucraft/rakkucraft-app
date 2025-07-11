@@ -1,4 +1,13 @@
 {
+  "new": "新規",
   "dashboard": "ダッシュボード",
-  "posts": "投稿"
+  "posts": "投稿",
+  "media": "メディア",
+  "pages": "固定ページ",
+  "comments": "コメント",
+  "appearance": "外観",
+  "plugins": "プラグイン",
+  "users": "ユーザー",
+  "tools": "ツール",
+  "settings": "設定"
 }

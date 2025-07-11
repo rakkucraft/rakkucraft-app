@@ -1,4 +1,13 @@
 {
+  "new": "New",
   "dashboard": "Dashboard",
-  "posts": "Posts"
+  "posts": "Posts",
+  "media": "Media",
+  "pages": "Pages",
+  "comments": "Comments",
+  "appearance": "Appearance",
+  "plugins": "Plugins",
+  "users": "Users",
+  "tools": "Tools",
+  "settings": "Settings"
 }

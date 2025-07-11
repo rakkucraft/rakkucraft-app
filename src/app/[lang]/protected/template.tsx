@@ -1,4 +1,7 @@
+"use client";
+
 import { rubik } from "@/lib/fonts";
+import { useLanguage, useTranslation } from "@/translations/client";
 import {
   Camera,
   Gauge,
@@ -8,7 +11,6 @@ import {
   Pin,
   Plug,
   Plus,
-  RefreshCw,
   Settings,
   StickyNote,
   UserRound,
@@ -16,7 +18,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Template({ children }: { children: React.ReactNode }) {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
   return (
     <>
       <header className="flex items-center justify-between bg-zinc-800 text-sm text-zinc-300">
@@ -36,12 +40,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </button>
           <button
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2"
-            aria-label="reloads"
-          >
-            <RefreshCw className="w-4 h-4 mr-1" />3
-          </button>
-          <button
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2"
             aria-label="comments"
           >
             <MessageSquare className="w-4 h-4 mr-1" />5
@@ -51,16 +49,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="new"
           >
             <Plus className="w-4 h-4 mr-1" />
-            New
+            {t("new")}
           </button>
         </div>
-        <div className="flex items-center mr-2">
-          <div className="mr-1.5">Test Admin</div>
+        <div>
           <button
-            className="cursor-pointer bg-gray-400 hover:bg-gray-500 text-white transition p-1"
+            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1"
             aria-label="account-setting"
           >
-            <UserRound className="w-4 h-4" />
+            <div className="mr-1.5">Test Admin</div>
+            <div className="bg-gray-400 text-white p-1">
+              <UserRound className="w-4 h-4" />
+            </div>
           </button>
         </div>
       </header>
@@ -72,7 +72,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="dashboard"
           >
             <Gauge className="w-4 h-4 mr-2.5" />
-            Dashboard
+            {t("dashboard")}
           </Link>
           <Link
             className="relative flex items-center cursor-pointer bg-sky-600 hover:bg-sky-500 text-white px-4 py-2"
@@ -81,7 +81,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-current="page"
           >
             <Pin className="w-4 h-4 mr-2.5" />
-            Posts
+            {t("posts")}
             <div className="absolute right-0 w-0 h-0 border-y-[10px] border-r-[10px] border-y-transparent border-r-zinc-100"></div>
           </Link>
           <Link
@@ -90,7 +90,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="media"
           >
             <Camera className="w-4 h-4 mr-2.5" />
-            Media
+            {t("media")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -98,7 +98,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="static-pages"
           >
             <StickyNote className="w-4 h-4 mr-2.5" />
-            Pages
+            {t("pages")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -106,7 +106,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="comments"
           >
             <MessageSquare className="w-4 h-4 mr-2.5" />
-            Comments
+            {t("comments")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -114,7 +114,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="appearances"
           >
             <PaintbrushVertical className="w-4 h-4 mr-2.5" />
-            Appearance
+            {t("appearance")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -122,7 +122,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="pulugins"
           >
             <Plug className="w-4 h-4 mr-2.5" />
-            Plugins
+            {t("plugins")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -130,7 +130,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="users"
           >
             <UserRound className="w-4 h-4 mr-2.5" />
-            Users
+            {t("users")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -138,7 +138,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="tools"
           >
             <Wrench className="w-4 h-4 mr-2.5" />
-            Tools
+            {t("tools")}
           </Link>
           <Link
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
@@ -146,7 +146,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             aria-label="settings"
           >
             <Settings className="w-4 h-4 mr-2.5" />
-            Settings
+            {t("settings")}
           </Link>
         </aside>
         <main className="bg-zinc-100 h-[calc(100vh-36px)] grow">
