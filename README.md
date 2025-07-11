@@ -43,14 +43,14 @@ Additionally, Rakkucraft offers:
 
 Rakkucraft consists of:
 
-- 🏠 **Rakkucraft.com**: Our core platform, built and maintained by the development team.  
+- 🏠 **Rakkucraft**: Our core platform, built and maintained by the development team.  
   It provides community features, content editing tools, and manages deployment workflows.
 
 - 🌐 **User Environment**: A semi-automatically generated site for each user.  
-  These environments are built using infrastructure provided by Rakkucraft.com.  
+  These environments are built using infrastructure provided by Rakkucraft.  
   Users manage content and appearance, which are reflected via automated mechanisms.
 
-Note: User Environments are not directly part of the application codebase—they are created by users using the tools and pipelines offered by Rakkucraft.com.
+Note: User Environments are not directly part of the application codebase—they are created by users using the tools and pipelines offered by Rakkucraft.
 
 ## ✨ Service Name Meaning
 
