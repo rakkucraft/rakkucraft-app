@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notoSansJp } from "@/lib/fonts";
+import { inter, notoSansJp } from "@/lib/fonts";
 import "./globals.css";
 import { dir } from "i18next";
 import { LanguageProvider } from "@/translations/client";
@@ -42,7 +42,7 @@ export default async function RootLayout({
   const { lang } = await params;
   return (
     <html lang={lang} dir={dir(lang)} prefix="og: https://ogp.me/ns#">
-      <body className={notoSansJp.className}>
+      <body className={lang === "ja" ? notoSansJp.className : inter.className}>
         <LanguageProvider initialLanguage={lang}>{children}</LanguageProvider>
       </body>
     </html>

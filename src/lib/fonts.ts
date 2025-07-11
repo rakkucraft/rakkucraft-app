@@ -7,13 +7,13 @@ export const rubik = Rubik({
 });
 
 export const notoSansJp = Noto_Sans_JP({
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
 });
 
 export const inter = Inter({
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
 });

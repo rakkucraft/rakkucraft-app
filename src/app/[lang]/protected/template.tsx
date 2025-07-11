@@ -32,29 +32,30 @@ export default function Template({ children }: { children: React.ReactNode }) {
             Rakkucraft
           </button>
           <button
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
             aria-label="current-site"
           >
-            <House className="w-4 h-4 mr-1" />
+            <House className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             Test Site
           </button>
           <button
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
             aria-label="comments"
           >
-            <MessageSquare className="w-4 h-4 mr-1" />5
+            <MessageSquare className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
+            5
           </button>
           <button
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
             aria-label="new"
           >
-            <Plus className="w-4 h-4 mr-1" />
+            <Plus className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             {t("new")}
           </button>
         </div>
         <div>
           <button
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1"
+            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
             aria-label="account-setting"
           >
             <div className="mr-1.5">Test Admin</div>
@@ -65,17 +66,17 @@ export default function Template({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <div className="flex">
-        <aside className="h-[calc(100vh-36px)] w-46 bg-zinc-800 text-sm text-zinc-300">
+        <aside className="h-[calc(100vh-36px)] w-46 bg-zinc-800 text-sm text-zinc-300 font-medium">
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="dashboard"
           >
-            <Gauge className="w-4 h-4 mr-2.5" />
+            <Gauge className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("dashboard")}
           </Link>
           <Link
-            className="relative flex items-center cursor-pointer bg-sky-600 hover:bg-sky-500 text-white px-4 py-2"
+            className="relative flex items-center cursor-pointer bg-sky-600 hover:bg-sky-500 text-white border-l-4 border-transparent transition p-2"
             href="/"
             aria-label="posts"
             aria-current="page"
@@ -85,67 +86,67 @@ export default function Template({ children }: { children: React.ReactNode }) {
             <div className="absolute right-0 w-0 h-0 border-y-[10px] border-r-[10px] border-y-transparent border-r-zinc-100"></div>
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="media"
           >
-            <Camera className="w-4 h-4 mr-2.5" />
+            <Camera className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("media")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="static-pages"
           >
-            <StickyNote className="w-4 h-4 mr-2.5" />
+            <StickyNote className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("pages")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="comments"
           >
-            <MessageSquare className="w-4 h-4 mr-2.5" />
+            <MessageSquare className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("comments")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="appearances"
           >
-            <PaintbrushVertical className="w-4 h-4 mr-2.5" />
+            <PaintbrushVertical className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("appearance")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="pulugins"
           >
-            <Plug className="w-4 h-4 mr-2.5" />
+            <Plug className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("plugins")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="users"
           >
-            <UserRound className="w-4 h-4 mr-2.5" />
+            <UserRound className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("users")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="tools"
           >
-            <Wrench className="w-4 h-4 mr-2.5" />
+            <Wrench className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("tools")}
           </Link>
           <Link
-            className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 px-4 py-2"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/protected/settings"
             aria-label="settings"
           >
-            <Settings className="w-4 h-4 mr-2.5" />
+            <Settings className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("settings")}
           </Link>
         </aside>
