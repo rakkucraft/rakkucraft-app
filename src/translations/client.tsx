@@ -20,8 +20,8 @@ i18next
   .use(
     resourcesToBackend(
       (lang: string, namespace: string) =>
-        import(`./languages/${lang}/${namespace}.json`)
-    )
+        import(`./languages/${lang}/${namespace}.json`),
+    ),
   )
   .init(getOptions());
 
@@ -44,7 +44,7 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 );
 
 interface LanguageProviderProps {
