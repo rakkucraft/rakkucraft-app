@@ -1,20 +1,77 @@
-import { updateSession } from "@/lib/supabase/middleware";
-import { type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import Negotiator from "negotiator";
+import { availableLanguages, defaultLanguage } from "./translations/settings";
+import { updateSession } from "./lib/supabase/middleware";
+import { hasEnvVars } from "./lib/utils";
+
+const getNegotiatedLanguage = (
+  headers: Negotiator.Headers,
+): string | undefined => {
+  return new Negotiator({ headers }).language([
+    ...availableLanguages.map((lang) => {
+      return lang.value;
+    }),
+  ]);
+};
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  let user = null;
+  let response = NextResponse.next();
+
+  if (hasEnvVars) {
+    const { supabaseResponse, user: authenticatedUser } =
+      await updateSession(request);
+    response = supabaseResponse;
+    user = authenticatedUser;
+  } else {
+    // 以下の処理はSupabase接続前の段階ための措置です。
+    // 認証有無によるリダイレクトをスキップしたい場合のみ実行してください。
+    user = true;
+  }
+
+  const headers = {
+    "accept-language": request.headers.get("accept-language") || "",
+  };
+  const preferredLanguage = getNegotiatedLanguage(headers) || defaultLanguage;
+  const pathname = request.nextUrl.pathname;
+
+  let specifiedLanguage;
+  availableLanguages.forEach((lang) => {
+    if (
+      pathname.startsWith(`/${lang.value}/`) ||
+      pathname === `/${lang.value}`
+    ) {
+      specifiedLanguage = lang.value;
+    }
+  });
+
+  // routing
+  if (specifiedLanguage) {
+    if (pathname.startsWith(`/${specifiedLanguage}/protected`) && !user) {
+      return NextResponse.redirect(
+        new URL(`/${specifiedLanguage}/login`, request.url),
+      );
+    }
+  } else {
+    if (pathname.startsWith(`/protected`) && !user) {
+      return NextResponse.redirect(
+        new URL(`/${preferredLanguage}/login`, request.url),
+      );
+    } else {
+      const newPathname = `/${preferredLanguage}${pathname}`;
+      if (preferredLanguage === defaultLanguage) {
+        return NextResponse.rewrite(new URL(newPathname, request.url));
+      } else {
+        return NextResponse.redirect(new URL(newPathname, request.url));
+      }
+    }
+  }
+
+  return response;
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
-     * Feel free to modify this pattern to include more paths.
-     */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!api|auth|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
