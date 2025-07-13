@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { inter, notoSansJp } from "@/lib/fonts";
 import "./globals.css";
 import { dir } from "i18next";
-import { LanguageProvider } from "@/translations/client";
+import { LanguageProvider } from "@/lib/i18n/client";
 
 const title = "Rakkucraft - A Modern CMS Like WordPress";
 const description = `

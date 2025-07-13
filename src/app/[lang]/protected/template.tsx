@@ -1,7 +1,7 @@
 "use client";
 
 import { rubik } from "@/lib/fonts";
-import { useLanguage, useTranslation } from "@/translations/client";
+import { useLanguage, useTranslation } from "@/lib/i18n/client";
 import {
   Camera,
   Gauge,
