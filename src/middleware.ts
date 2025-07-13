@@ -23,10 +23,6 @@ export async function middleware(request: NextRequest) {
       await updateSession(request);
     response = supabaseResponse;
     user = authenticatedUser;
-  } else {
-    // 以下の処理はSupabase接続前の段階ための措置です。
-    // 認証有無によるリダイレクトをスキップしたい場合のみ実行してください。
-    user = true;
   }
 
   const headers = {
