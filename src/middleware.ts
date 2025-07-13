@@ -1,47 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import Negotiator from "negotiator";
-import { availableLanguages, defaultLanguage } from "./translations/settings";
+import { defaultLanguage } from "./lib/i18n/settings";
 import { updateSession } from "./lib/supabase/middleware";
-import { hasEnvVars } from "./lib/utils";
-
-const getNegotiatedLanguage = (
-  headers: Negotiator.Headers,
-): string | undefined => {
-  return new Negotiator({ headers }).language([
-    ...availableLanguages.map((lang) => {
-      return lang.value;
-    }),
-  ]);
-};
+import { getCurrentLanguageSettings } from "./lib/i18n/middleware";
 
 export async function middleware(request: NextRequest) {
-  let user = null;
-  let response = NextResponse.next();
+  // Process of Supabase
+  const { supabaseResponse: response, user: user } =
+    await updateSession(request);
 
-  if (hasEnvVars) {
-    const { supabaseResponse, user: authenticatedUser } =
-      await updateSession(request);
-    response = supabaseResponse;
-    user = authenticatedUser;
-  }
+  // Process of i18n
+  const {
+    specifiedLanguage: specifiedLanguage,
+    preferredLanguage: preferredLanguage,
+    pathname: pathname,
+  } = getCurrentLanguageSettings(request);
 
-  const headers = {
-    "accept-language": request.headers.get("accept-language") || "",
-  };
-  const preferredLanguage = getNegotiatedLanguage(headers) || defaultLanguage;
-  const pathname = request.nextUrl.pathname;
-
-  let specifiedLanguage;
-  availableLanguages.forEach((lang) => {
-    if (
-      pathname.startsWith(`/${lang.value}/`) ||
-      pathname === `/${lang.value}`
-    ) {
-      specifiedLanguage = lang.value;
-    }
-  });
-
-  // routing
+  // Routing
   if (specifiedLanguage) {
     if (pathname.startsWith(`/${specifiedLanguage}/protected`) && !user) {
       return NextResponse.redirect(
@@ -62,7 +36,6 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-
   return response;
 }
 
