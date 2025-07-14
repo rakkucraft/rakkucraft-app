@@ -1,5 +1,6 @@
 "use client";
 
+import CustomLink from "@/components/Common/CustomLink";
 import { rubik } from "@/lib/fonts";
 import { useLanguage, useTranslation } from "@/lib/i18n/client";
 import {
@@ -16,7 +17,6 @@ import {
   UserRound,
   Wrench,
 } from "lucide-react";
-import Link from "next/link";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { lang } = useLanguage();
@@ -67,15 +67,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
       </header>
       <div className="flex">
         <aside className="h-[calc(100vh-36px)] w-46 bg-zinc-800 text-sm text-zinc-300 font-medium">
-          <Link
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="dashboard"
           >
             <Gauge className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("dashboard")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="relative flex items-center cursor-pointer bg-sky-600 hover:bg-sky-500 text-white border-l-4 border-transparent transition p-2"
             href="/"
             aria-label="posts"
@@ -84,71 +84,71 @@ export default function Template({ children }: { children: React.ReactNode }) {
             <Pin className="w-4 h-4 mr-2.5" />
             {t("posts")}
             <div className="absolute right-0 w-0 h-0 border-y-[10px] border-r-[10px] border-y-transparent border-r-zinc-100"></div>
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="media"
           >
             <Camera className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("media")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="static-pages"
           >
             <StickyNote className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("pages")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="comments"
           >
             <MessageSquare className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("comments")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="appearances"
           >
             <PaintbrushVertical className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("appearance")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="pulugins"
           >
             <Plug className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("plugins")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="users"
           >
             <UserRound className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("users")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
             aria-label="tools"
           >
             <Wrench className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("tools")}
-          </Link>
-          <Link
+          </CustomLink>
+          <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/protected/settings"
             aria-label="settings"
           >
             <Settings className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("settings")}
-          </Link>
+          </CustomLink>
         </aside>
         <main className="bg-zinc-100 h-[calc(100vh-36px)] grow">
           {children}

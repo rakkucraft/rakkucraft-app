@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
+import React from "react";
 import i18next from "i18next";
 import {
   initReactI18next,
@@ -28,7 +22,7 @@ i18next
 export function useTranslation(lang: string) {
   const { t, i18n } = useTranslationOrigin();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const shouldChangeLanguage = lang && lang !== i18n.resolvedLanguage;
     if (shouldChangeLanguage) {
       i18n.changeLanguage(lang);
@@ -43,12 +37,12 @@ interface LanguageContextType {
   setLang: (lang: string) => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
+const LanguageContext = React.createContext<LanguageContextType | undefined>(
   undefined,
 );
 
 interface LanguageProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
   initialLanguage: string;
 }
 
@@ -56,7 +50,7 @@ export const LanguageProvider = ({
   children,
   initialLanguage,
 }: LanguageProviderProps) => {
-  const [lang, setLang] = useState<string>(initialLanguage);
+  const [lang, setLang] = React.useState<string>(initialLanguage);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
@@ -66,7 +60,7 @@ export const LanguageProvider = ({
 };
 
 export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
+  const context = React.useContext(LanguageContext);
   if (!context) {
     throw new Error("useLanguage must be used within a LanguageProvider");
   }
