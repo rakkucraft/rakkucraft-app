@@ -27,27 +27,27 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <div className="flex items-center">
           <button
             className={`flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 ${rubik.className} font-medium`}
-            aria-label="current-site"
+            aria-label="Top page"
           >
             {t("site-name")}
           </button>
           <button
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
-            aria-label="current-site"
+            aria-label="Current site"
           >
             <House className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             Test Site
           </button>
           <button
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
-            aria-label="comments"
+            aria-label="View comments"
           >
             <MessageSquare className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             5
           </button>
           <button
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
-            aria-label="new"
+            aria-label="New"
           >
             <Plus className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             {t("new")}
@@ -56,7 +56,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <div>
           <button
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
-            aria-label="account-setting"
+            aria-label="Account settings"
           >
             <div className="mr-1.5">Test Admin</div>
             <div className="bg-gray-400 text-white p-1">
@@ -70,7 +70,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="dashboard"
+            aria-label="Dashboard"
           >
             <Gauge className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("dashboard")}
@@ -78,7 +78,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="relative flex items-center cursor-pointer bg-sky-600 hover:bg-sky-500 text-white border-l-4 border-transparent transition p-2"
             href="/"
-            aria-label="posts"
+            aria-label="Posts"
             aria-current="page"
           >
             <Pin className="w-4 h-4 mr-2.5" />
@@ -88,7 +88,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="media"
+            aria-label="Media"
           >
             <Camera className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("media")}
@@ -96,7 +96,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="static-pages"
+            aria-label="Static pages"
           >
             <StickyNote className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("pages")}
@@ -104,7 +104,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="comments"
+            aria-label="Comments"
           >
             <MessageSquare className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("comments")}
@@ -112,7 +112,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="appearances"
+            aria-label="Appearances"
           >
             <PaintbrushVertical className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("appearance")}
@@ -120,7 +120,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="pulugins"
+            aria-label="Pulugins"
           >
             <Plug className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("plugins")}
@@ -128,7 +128,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="users"
+            aria-label="Users"
           >
             <UserRound className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("users")}
@@ -136,7 +136,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/"
-            aria-label="tools"
+            aria-label="Tools"
           >
             <Wrench className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("tools")}
@@ -144,7 +144,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <CustomLink
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 border-l-4 border-transparent hover:border-sky-300 transition p-2"
             href="/protected/settings"
-            aria-label="settings"
+            aria-label="Settings"
           >
             <Settings className="w-4 h-4 mr-2.5 text-zinc-400 group-hover:text-sky-300" />
             {t("settings")}
