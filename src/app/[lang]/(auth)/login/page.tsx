@@ -9,7 +9,7 @@ export default function Page() {
         >
           Rakkucraft
         </div>
-        <div className="w-full max-w-xs bg-white border-1 border-gray-300 shadow-xs p-6">
+        <div className="w-full max-w-xs bg-white border-1 border-gray-300 shadow-xs p-6 mb-16">
           <div className="space-y-1 pb-4">
             <label className="block text-sm font-medium text-gray-500">
               Email Address
