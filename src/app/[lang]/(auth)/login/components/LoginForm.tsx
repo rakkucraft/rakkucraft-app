@@ -50,7 +50,7 @@ export default function LoginForm() {
             name="email"
             autoFocus
             maxLength={100}
-            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition"
+            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-700 focus:border-transparent transition"
             disabled={loading}
           />
         </div>
@@ -66,7 +66,7 @@ export default function LoginForm() {
             name="password"
             autoFocus
             maxLength={100}
-            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition"
+            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-700 focus:border-transparent transition"
             disabled={loading}
           />
           <button
