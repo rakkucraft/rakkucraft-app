@@ -3,7 +3,7 @@ export const availableLanguages = [
   { label: "English", value: "en" },
   { label: "日本語", value: "ja" },
 ];
-export const namespaces = ["common", "auth"];
+export const namespaces = ["common", "auth", "error"];
 
 export function getOptions(lng: string = defaultLanguage) {
   return {

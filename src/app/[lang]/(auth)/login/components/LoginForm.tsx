@@ -1,33 +1,78 @@
 "use client";
 
+import CustomButton from "@/components/Common/CustomButton";
+import { useLanguage, useTranslation } from "@/lib/i18n/client";
+import React, { FormEvent } from "react";
+import { loginAction } from "../../actions";
+import { TreeifiedError } from "@/lib/types";
+import { ErrorMessages } from "@/components/Common/ErrorMessages";
+
 export default function LoginForm() {
+  const { lang } = useLanguage();
+  const { t } = useTranslation(lang);
+  const [treeifyError, setTreeifyError] = React.useState<
+    TreeifiedError | undefined
+  >(undefined);
+  const [loading, setLoading] = React.useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setTreeifyError(undefined);
+    setLoading(true);
+    try {
+      const formData = new FormData(event.currentTarget);
+      const result = await loginAction(formData);
+      if (!result?.isSuccess) {
+        setTreeifyError(result?.treeifyError);
+        setLoading(false);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+        setTreeifyError({ errors: [error.message] });
+        setLoading(false);
+      }
+    }
+  }
+
   return (
-    <>
-      <form>
-        <div className="space-y-1 pb-4">
-          <label className="block text-sm font-medium text-gray-500">
-            Email Address
-          </label>
-          <input
-            type="text"
-            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
-          />
-        </div>
-        <div className="space-y-1 pb-4">
-          <label className="block text-sm font-medium text-gray-500">
-            Password
-          </label>
-          <input
-            type="password"
-            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
-          />
-        </div>
-        <div className="flex justify-end">
-          <button className="px-3 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer">
-            Log In
-          </button>
-        </div>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} noValidate>
+      <ErrorMessages errors={treeifyError?.errors} />
+      <div className="space-y-1 mb-4">
+        <label className="block text-sm font-medium text-gray-500">
+          {t("auth:email")}
+        </label>
+        <input
+          type="email"
+          name="email"
+          maxLength={100}
+          className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
+          disabled={loading}
+        />
+        <ErrorMessages errors={treeifyError?.properties?.email?.errors} />
+      </div>
+      <div className="space-y-1 mb-4">
+        <label className="block text-sm font-medium text-gray-500">
+          {t("auth:password")}
+        </label>
+        <input
+          type="password"
+          name="password"
+          maxLength={100}
+          className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
+          disabled={loading}
+        />
+        <ErrorMessages errors={treeifyError?.properties?.password?.errors} />
+      </div>
+      <div className="flex justify-end">
+        <CustomButton
+          type="submit"
+          className="px-3 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer"
+          loading={loading}
+        >
+          {t("auth:login")}
+        </CustomButton>
+      </div>
+    </form>
   );
 }

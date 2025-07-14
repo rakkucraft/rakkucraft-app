@@ -1,0 +1,9 @@
+{
+  "supabase_invalid_credentials": "Authentication failed.",
+  "required_email": "Email address is required.",
+  "invalid_email": "The email format is invalid.",
+  "limit_length_email": "Email must be within 100 characters.",
+  "required_password": "Password is required.",
+  "invalid_password": "Password must be a valid string.",
+  "limit_length_password": "Password must be within 100 characters."
+}

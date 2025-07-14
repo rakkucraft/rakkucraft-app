@@ -29,7 +29,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             className={`flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 ${rubik.className} font-medium`}
             aria-label="current-site"
           >
-            Rakkucraft
+            {t("site-name")}
           </button>
           <button
             className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
