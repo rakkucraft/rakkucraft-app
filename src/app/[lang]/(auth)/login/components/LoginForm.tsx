@@ -6,6 +6,7 @@ import React, { FormEvent } from "react";
 import { loginAction } from "../../actions";
 import { TreeifiedError } from "@/lib/types";
 import { ErrorMessages } from "@/components/Common/ErrorMessages";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginForm() {
   const { lang } = useLanguage();
@@ -14,6 +15,7 @@ export default function LoginForm() {
     TreeifiedError | undefined
   >(undefined);
   const [loading, setLoading] = React.useState(false);
+  const [showPassword, setShowPassword] = React.useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -42,32 +44,46 @@ export default function LoginForm() {
         <label className="block text-sm font-medium text-gray-500">
           {t("auth:email")}
         </label>
-        <input
-          type="email"
-          name="email"
-          maxLength={100}
-          className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
-          disabled={loading}
-        />
+        <div>
+          <input
+            type="email"
+            name="email"
+            autoFocus
+            maxLength={100}
+            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition"
+            disabled={loading}
+          />
+        </div>
         <ErrorMessages errors={treeifyError?.properties?.email?.errors} />
       </div>
       <div className="space-y-1 mb-4">
         <label className="block text-sm font-medium text-gray-500">
           {t("auth:password")}
         </label>
-        <input
-          type="password"
-          name="password"
-          maxLength={100}
-          className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition-all duration-200"
-          disabled={loading}
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            autoFocus
+            maxLength={100}
+            className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent transition"
+            disabled={loading}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-2 top-2 p-1 cursor-pointer text-sky-700 hover:text-sky-800"
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
         <ErrorMessages errors={treeifyError?.properties?.password?.errors} />
       </div>
       <div className="flex justify-end">
         <CustomButton
           type="submit"
-          className="px-3 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer"
+          className="px-4 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer"
           loading={loading}
         >
           {t("auth:login")}
