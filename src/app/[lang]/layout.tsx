@@ -3,13 +3,13 @@ import { inter, notoSansJp } from "@/lib/fonts";
 import "./globals.css";
 import { dir } from "i18next";
 import { LanguageProvider } from "@/lib/i18n/client";
+import { baseUrl } from "@/lib/metadata";
 
 const title = "Rakkucraft - A Modern CMS Like WordPress";
 const description = `
 Rakkucraft reimagines the WordPress experience using a modern tech stack—empowering users to build, 
 manage, and deploy websites with familiar workflows and vastly improved performance.
 `;
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: title,

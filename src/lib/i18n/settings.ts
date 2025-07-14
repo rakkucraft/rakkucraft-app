@@ -1,9 +1,9 @@
-export const defaultLanguage = "ja";
+export const defaultLanguage = "en";
 export const availableLanguages = [
-  { label: "日本語", value: "ja" },
   { label: "English", value: "en" },
+  { label: "日本語", value: "ja" },
 ];
-export const namespaces = ["common"];
+export const namespaces = ["common", "auth"];
 
 export function getOptions(lng: string = defaultLanguage) {
   return {
