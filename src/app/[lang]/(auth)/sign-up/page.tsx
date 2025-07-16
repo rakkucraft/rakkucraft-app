@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { setMetadata } from "@/lib/metadata";
 import CustomLink from "@/components/Common/CustomLink";
 import { getTranslation } from "@/lib/i18n/server";
+import SignUpForm from "./components/SignUpForm";
 
 const title = "auth:sign_up";
 const url = "sign-up";
@@ -25,7 +26,7 @@ export default async function Page({
   return (
     <>
       <div className="w-full bg-white border border-gray-300 shadow-xs p-6 mb-6">
-        {/*<LoginForm />*/}
+        <SignUpForm />
       </div>
       <div className="ml-6 mb-12 text-sm">
         <CustomLink

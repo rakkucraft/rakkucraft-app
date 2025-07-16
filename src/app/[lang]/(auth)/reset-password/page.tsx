@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { setMetadata } from "@/lib/metadata";
 import { getTranslation } from "@/lib/i18n/server";
+import ResetPasswordForm from "./components/ResetPasswordForm";
 
 const title = "auth:reset_password";
 const url = "reset-password";
@@ -24,7 +25,7 @@ export default async function Page({
   return (
     <>
       <div className="w-full bg-white border border-gray-300 shadow-xs p-6 mb-6">
-        {/*<LoginForm />*/}
+        <ResetPasswordForm />
       </div>
     </>
   );
