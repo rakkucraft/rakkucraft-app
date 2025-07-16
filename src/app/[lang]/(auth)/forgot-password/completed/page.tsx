@@ -5,7 +5,7 @@ import { setMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 
 const title = "auth:forgot_password";
-const url = "forgot-password";
+const url = "forgot-password/completed";
 
 export async function generateMetadata({
   params,
