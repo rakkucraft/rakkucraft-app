@@ -10,9 +10,14 @@ const config: Config = {
     prefix: "<rootDir>/",
   }),
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
-  moduleFileExtensions: ["ts", "tsx", "js"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        tsconfig: "tsconfig.test.json",
+      },
+    ],
   },
 };
 

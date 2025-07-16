@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-const formSchema = z.strictObject({
+const loginFormSchema = z.strictObject({
   email: z
     .email({
       error: (issue) =>
@@ -29,7 +29,36 @@ export async function loginAction(formData: FormData) {
     password: formData.get("password"),
   };
 
-  const result = formSchema.safeParse(raw, { reportInput: true });
+  const result = loginFormSchema.safeParse(raw, { reportInput: true });
+
+  if (!result.success) {
+    return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
+  }
+
+  const { email, password } = result.data;
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+  if (!error) {
+    redirect("/protected");
+  } else {
+    return {
+      isSuccess: false,
+      treeifyError: { errors: [`error:supabase_${String(error.code)}`] },
+    };
+  }
+}
+
+export async function forgotPasswordAction(formData: FormData) {
+  const raw = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+
+  const result = loginFormSchema.safeParse(raw, { reportInput: true });
 
   if (!result.success) {
     return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
