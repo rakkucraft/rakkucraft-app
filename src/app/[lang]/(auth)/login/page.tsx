@@ -45,7 +45,7 @@ export default async function Page({
             href={`/${lang}/forgot-password`}
             aria-label="Forgot password"
           >
-            {t("auth:forgot-password")}
+            {t("auth:forgot_your_password")}
           </CustomLink>
         </div>
       </div>

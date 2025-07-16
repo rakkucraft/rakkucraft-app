@@ -1,5 +1,3 @@
-"use client";
-
 import NextLink, { LinkProps } from "next/link";
 
 type CustomLinkProps = {
@@ -12,7 +10,9 @@ export default function CustomLink({
   href,
   ...props
 }: CustomLinkProps) {
-  const isExternal = typeof href === "string" && href.startsWith("http");
+  const isExternal =
+    typeof href === "string" &&
+    (href.startsWith("http://") || href.startsWith("https://"));
   const target = isExternal ? "_blank" : props.target;
   const rel = isExternal ? "noopener noreferrer" : props.rel;
 
