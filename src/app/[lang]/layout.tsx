@@ -3,7 +3,7 @@ import { inter, notoSansJp } from "@/lib/fonts";
 import "./globals.css";
 import { dir } from "i18next";
 import { LanguageProvider } from "@/lib/i18n/client";
-import { baseUrl } from "@/lib/metadata";
+import { baseUrl } from "@/lib/utils";
 
 const title = "Rakkucraft - A Modern CMS Like WordPress";
 const description = `

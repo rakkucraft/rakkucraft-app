@@ -1,7 +1,5 @@
 import { getTranslation } from "./i18n/server";
-
-export const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+import { baseUrl } from "./utils";
 
 export async function setMetadata({
   title,
