@@ -3,8 +3,8 @@ import { getTranslation } from "@/lib/i18n/server";
 import { setMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 
-const title = "auth:forgot_password";
-const url = "forgot-password/completed";
+const title = "auth:sign_up";
+const url = "sign-up/completed";
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,7 @@ export default async function Page({
   return (
     <>
       <div className="bg-white border border-gray-300 border-l-sky-400 border-l-4 shadow-xs text-sm text-zinc-500 p-3 mb-6">
-        {t("auth:forgot_password_completed_description")}
+        {t("auth:sign_up_completed_description")}
       </div>
       <div className="ml-6 mb-12 text-sm">
         <CustomLink

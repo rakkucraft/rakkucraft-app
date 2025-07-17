@@ -3,7 +3,7 @@
 import CustomButton from "@/components/Common/CustomButton";
 import { useLanguage, useTranslation } from "@/lib/i18n/client";
 import React, { FormEvent } from "react";
-import { loginAction } from "../../actions";
+import { signUpAction } from "../../actions";
 import { TreeifiedError } from "@/lib/types";
 import { ErrorMessages } from "@/components/Common/ErrorMessages";
 import { Eye, EyeOff } from "lucide-react";
@@ -23,7 +23,7 @@ export default function SignUpForm() {
     setLoading(true);
     try {
       const formData = new FormData(event.currentTarget);
-      const result = await loginAction(formData);
+      const result = await signUpAction(formData);
       if (!result?.isSuccess) {
         setTreeifyError(result?.treeifyError);
         setLoading(false);
@@ -86,7 +86,7 @@ export default function SignUpForm() {
           className="px-4 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer"
           loading={loading}
         >
-          {t("auth:login")}
+          {t("auth:sign_up")}
         </CustomButton>
       </div>
     </form>

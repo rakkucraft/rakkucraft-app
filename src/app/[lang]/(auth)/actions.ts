@@ -2,27 +2,14 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { baseUrl } from "@/lib/utils";
+import {
+  forgotPasswordFormSchema,
+  loginFormSchema,
+  resetPasswordFormSchema,
+  signUpFormSchema,
+} from "@/lib/validation/schemas";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-
-const loginFormSchema = z.strictObject({
-  email: z
-    .email({
-      error: (issue) =>
-        issue.input === undefined || issue.input === ""
-          ? "error:required_email"
-          : "error:invalid_email",
-    })
-    .max(100, { error: "error:limit_length_email" }),
-  password: z
-    .string({
-      error: (issue) =>
-        issue.input === undefined || issue.input === ""
-          ? "error:required_password"
-          : "error:invalid_password",
-    })
-    .max(100, { error: "error:limit_length_password" }),
-});
 
 export async function loginAction(formData: FormData) {
   const raw = {
@@ -49,22 +36,51 @@ export async function loginAction(formData: FormData) {
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [`error:supabase_${String(error.code)}`, error.message],
+        errors: [
+          `error:supabase_${String(error.code ?? "unknown")}`,
+          error.message,
+        ],
       },
     };
   }
 }
 
-const forgotPasswordFormSchema = z.strictObject({
-  email: z
-    .email({
-      error: (issue) =>
-        issue.input === undefined || issue.input === ""
-          ? "error:required_email"
-          : "error:invalid_email",
-    })
-    .max(100, { error: "error:limit_length_email" }),
-});
+export async function signUpAction(formData: FormData) {
+  const raw = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+
+  const result = signUpFormSchema.safeParse(raw, { reportInput: true });
+
+  if (!result.success) {
+    return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
+  }
+
+  const { email, password } = result.data;
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: `${baseUrl}/auth/callback`,
+    },
+  });
+  if (!error) {
+    redirect("/sign-up/completed");
+  } else {
+    return {
+      isSuccess: false,
+      treeifyError: {
+        errors: [
+          `error:supabase_${String(error.code ?? "unknown")}`,
+          error.message,
+        ],
+      },
+    };
+  }
+}
 
 export async function forgotPasswordAction(formData: FormData) {
   const raw = {
@@ -89,7 +105,44 @@ export async function forgotPasswordAction(formData: FormData) {
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [`error:supabase_${String(error.code)}`, error.message],
+        errors: [
+          `error:supabase_${String(error.code ?? "unknown")}`,
+          error.message,
+        ],
+      },
+    };
+  }
+}
+
+export async function resetPasswordAction(formData: FormData) {
+  const raw = {
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirm-password"),
+  };
+
+  const result = resetPasswordFormSchema.safeParse(raw, { reportInput: true });
+
+  if (!result.success) {
+    return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
+  }
+
+  const { password } = result.data;
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  if (!error) {
+    redirect("/reset-password/completed");
+  } else {
+    return {
+      isSuccess: false,
+      treeifyError: {
+        errors: [
+          `error:supabase_${String(error.code ?? "unknown")}`,
+          error.message,
+        ],
       },
     };
   }
