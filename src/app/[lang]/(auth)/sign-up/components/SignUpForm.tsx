@@ -7,8 +7,10 @@ import { signUpAction } from "../../actions";
 import { TreeifiedError } from "@/lib/types";
 import { ErrorMessages } from "@/components/Common/ErrorMessages";
 import { Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
+  const router = useRouter();
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
   const [treeifyError, setTreeifyError] = React.useState<
@@ -24,6 +26,9 @@ export default function SignUpForm() {
     try {
       const formData = new FormData(event.currentTarget);
       const result = await signUpAction(formData);
+      if (result.isSuccess && result.redirectTo) {
+        router.push(result.redirectTo);
+      }
       if (!result?.isSuccess) {
         setTreeifyError(result?.treeifyError);
         setLoading(false);
@@ -64,7 +69,6 @@ export default function SignUpForm() {
           <input
             type={showPassword ? "text" : "password"}
             name="password"
-            autoFocus
             maxLength={100}
             className="block w-full px-3 py-2 border border-gray-400 rounded-sm focus:outline-none focus:ring-2 focus:ring-sky-700 focus:border-transparent transition"
             disabled={loading}

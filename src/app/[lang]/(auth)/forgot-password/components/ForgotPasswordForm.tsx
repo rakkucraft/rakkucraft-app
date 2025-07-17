@@ -6,8 +6,10 @@ import { TreeifiedError } from "@/lib/types";
 import { ErrorMessages } from "@/components/Common/ErrorMessages";
 import CustomButton from "@/components/Common/CustomButton";
 import { forgotPasswordAction } from "../../actions";
+import { useRouter } from "next/navigation";
 
 export default function ForgotPasswordForm() {
+  const router = useRouter();
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
   const [treeifyError, setTreeifyError] = React.useState<
@@ -22,6 +24,9 @@ export default function ForgotPasswordForm() {
     try {
       const formData = new FormData(event.currentTarget);
       const result = await forgotPasswordAction(formData);
+      if (result.isSuccess && result.redirectTo) {
+        router.push(result.redirectTo);
+      }
       if (!result?.isSuccess) {
         setTreeifyError(result?.treeifyError);
         setLoading(false);
