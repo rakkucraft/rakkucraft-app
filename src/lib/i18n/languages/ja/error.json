@@ -5,5 +5,9 @@
   "limit_length_email": "メールアドレスは100文字以内で入力してください",
   "required_password": "パスワードは必須です",
   "invalid_password": "パスワードは文字列で入力してください",
-  "limit_length_password": "パスワードは100文字以内で入力してください"
+  "limit_length_password": "パスワードは100文字以内で入力してください",
+  "required_confirm_password": "パスワード確認は必須です",
+  "invalid_confirm_password": "パスワード確認は文字列で入力してください",
+  "limit_length_confirm_password": "パスワード確認は100文字以内で入力してください",
+  "password_mismatch": "パスワードが一致しません"
 }

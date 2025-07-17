@@ -60,7 +60,7 @@ export default function ForgotPasswordForm() {
           className="px-4 py-2 rounded-sm bg-sky-700 hover:bg-sky-800 text-white text-xs cursor-pointer"
           loading={loading}
         >
-          {t("auth:get_new_passwoed")}
+          {t("auth:get_new_password")}
         </CustomButton>
       </div>
     </form>
