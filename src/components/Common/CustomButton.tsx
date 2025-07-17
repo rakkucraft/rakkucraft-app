@@ -23,7 +23,7 @@ export default function CustomButton({
       {...props}
     >
       {loading ? (
-        <Loader className="animate-spin w-4 h-4" />
+        <Loader className="animate-spin" size={15} />
       ) : (
         <span>{children}</span>
       )}
