@@ -17,43 +17,60 @@ import {
   UserRound,
   Wrench,
 } from "lucide-react";
+import { logoutAction } from "../(auth)/actions";
+import { useRouter } from "next/navigation";
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const { lang } = useLanguage();
   const { t } = useTranslation(lang);
+
+  const handleClickLogout = async () => {
+    try {
+      const result = await logoutAction();
+      if (result.isSuccess && result.redirectTo) {
+        router.push(result.redirectTo);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+  };
+
   return (
     <>
       <header className="flex items-center justify-between bg-zinc-800 text-sm text-zinc-300">
         <div className="flex items-center">
           <button
-            className={`flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 ${rubik.className} font-medium`}
+            className={`flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 ${rubik.className} font-medium`}
             aria-label="Top page"
           >
             {t("site-name")}
           </button>
           <button
-            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
             aria-label="Current site"
           >
             <House className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             Test Site
           </button>
           <button
-            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
             aria-label="View comments"
           >
             <MessageSquare className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             5
           </button>
           <button
-            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-2 font-medium"
+            className="group flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
             aria-label="New"
           >
             <Plus className="w-4 h-4 mr-1 text-zinc-400 group-hover:text-sky-300" />
             {t("new")}
           </button>
         </div>
-        <div>
+        <div className="group relative">
           <button
             className="flex items-center cursor-pointer hover:bg-sky-950 hover:text-sky-300 transition px-2 py-1 font-medium"
             aria-label="Account settings"
@@ -63,6 +80,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
               <UserRound className="w-4 h-4" />
             </div>
           </button>
+          <div className="absolute right-0 hidden group-hover:block bg-zinc-700 p-2 w-50">
+            <button
+              className="cursor-pointer hover:bg-sky-950 hover:text-sky-300"
+              onClick={handleClickLogout}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </header>
       <div className="flex">

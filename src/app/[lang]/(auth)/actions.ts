@@ -18,14 +18,12 @@ export async function loginAction(formData: FormData): Promise<ActionResult> {
   };
 
   const result = loginFormSchema.safeParse(raw, { reportInput: true });
-
   if (!result.success) {
     return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
   }
 
   const { email, password } = result.data;
   const supabase = await createClient();
-
   const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -36,10 +34,7 @@ export async function loginAction(formData: FormData): Promise<ActionResult> {
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [
-          `error:supabase_${String(error.code ?? "unknown")}`,
-          error.message,
-        ],
+        errors: [`error:supabase_${String(error.code ?? "unknown")}`],
       },
     };
   }
@@ -52,14 +47,12 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
   };
 
   const result = signUpFormSchema.safeParse(raw, { reportInput: true });
-
   if (!result.success) {
     return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
   }
 
   const { email, password } = result.data;
   const supabase = await createClient();
-
   const { error } = await supabase.auth.signUp({
     email,
     password,
@@ -73,10 +66,7 @@ export async function signUpAction(formData: FormData): Promise<ActionResult> {
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [
-          `error:supabase_${String(error.code ?? "unknown")}`,
-          error.message,
-        ],
+        errors: [`error:supabase_${String(error.code ?? "unknown")}`],
       },
     };
   }
@@ -90,14 +80,12 @@ export async function forgotPasswordAction(
   };
 
   const result = forgotPasswordFormSchema.safeParse(raw, { reportInput: true });
-
   if (!result.success) {
     return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
   }
 
   const { email } = result.data;
   const supabase = await createClient();
-
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${baseUrl}/auth/callback?redirect_to=/reset-password`,
   });
@@ -107,10 +95,7 @@ export async function forgotPasswordAction(
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [
-          `error:supabase_${String(error.code ?? "unknown")}`,
-          error.message,
-        ],
+        errors: [`error:supabase_${String(error.code ?? "unknown")}`],
       },
     };
   }
@@ -125,28 +110,37 @@ export async function resetPasswordAction(
   };
 
   const result = resetPasswordFormSchema.safeParse(raw, { reportInput: true });
-
   if (!result.success) {
     return { isSuccess: false, treeifyError: z.treeifyError(result.error) };
   }
 
   const { password } = result.data;
   const supabase = await createClient();
-
   const { error } = await supabase.auth.updateUser({
     password,
   });
-
   if (!error) {
     return { isSuccess: true, redirectTo: "/reset-password/completed" };
   } else {
     return {
       isSuccess: false,
       treeifyError: {
-        errors: [
-          `error:supabase_${String(error.code ?? "unknown")}`,
-          error.message,
-        ],
+        errors: [`error:supabase_${String(error.code ?? "unknown")}`],
+      },
+    };
+  }
+}
+
+export async function logoutAction(): Promise<ActionResult> {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signOut();
+  if (!error) {
+    return { isSuccess: true, redirectTo: "/login" };
+  } else {
+    return {
+      isSuccess: false,
+      treeifyError: {
+        errors: [`error:supabase_${String(error.code ?? "unknown")}`],
       },
     };
   }
