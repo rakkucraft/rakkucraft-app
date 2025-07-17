@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { ActionResult } from "@/lib/types";
 import { baseUrl } from "@/lib/utils";
 import {
   forgotPasswordFormSchema,
@@ -8,10 +9,9 @@ import {
   resetPasswordFormSchema,
   signUpFormSchema,
 } from "@/lib/validation/schemas";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 
-export async function loginAction(formData: FormData) {
+export async function loginAction(formData: FormData): Promise<ActionResult> {
   const raw = {
     email: formData.get("email"),
     password: formData.get("password"),
@@ -31,7 +31,7 @@ export async function loginAction(formData: FormData) {
     password,
   });
   if (!error) {
-    redirect("/protected");
+    return { isSuccess: true, redirectTo: "/protected" };
   } else {
     return {
       isSuccess: false,
@@ -45,7 +45,7 @@ export async function loginAction(formData: FormData) {
   }
 }
 
-export async function signUpAction(formData: FormData) {
+export async function signUpAction(formData: FormData): Promise<ActionResult> {
   const raw = {
     email: formData.get("email"),
     password: formData.get("password"),
@@ -68,7 +68,7 @@ export async function signUpAction(formData: FormData) {
     },
   });
   if (!error) {
-    redirect("/sign-up/completed");
+    return { isSuccess: true, redirectTo: "/sign-up/completed" };
   } else {
     return {
       isSuccess: false,
@@ -82,7 +82,9 @@ export async function signUpAction(formData: FormData) {
   }
 }
 
-export async function forgotPasswordAction(formData: FormData) {
+export async function forgotPasswordAction(
+  formData: FormData,
+): Promise<ActionResult> {
   const raw = {
     email: formData.get("email"),
   };
@@ -100,7 +102,7 @@ export async function forgotPasswordAction(formData: FormData) {
     redirectTo: `${baseUrl}/auth/callback?redirect_to=/reset-password`,
   });
   if (!error) {
-    redirect("/forgot-password/completed");
+    return { isSuccess: true, redirectTo: "/forgot-password/completed" };
   } else {
     return {
       isSuccess: false,
@@ -114,7 +116,9 @@ export async function forgotPasswordAction(formData: FormData) {
   }
 }
 
-export async function resetPasswordAction(formData: FormData) {
+export async function resetPasswordAction(
+  formData: FormData,
+): Promise<ActionResult> {
   const raw = {
     password: formData.get("password"),
     confirmPassword: formData.get("confirm-password"),
@@ -134,7 +138,7 @@ export async function resetPasswordAction(formData: FormData) {
   });
 
   if (!error) {
-    redirect("/reset-password/completed");
+    return { isSuccess: true, redirectTo: "/reset-password/completed" };
   } else {
     return {
       isSuccess: false,
